@@ -1,0 +1,34 @@
+{
+    "name": "yosmy/phone-user",
+    "description": "",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yosmany Garcia",
+            "email": "yosmanyga@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "ext-mongodb": "*",
+        "ext-json": "*",
+        "mongodb/mongodb": "~1",
+        "yosmy/mongo": "@dev",
+        "yosmy/phone-normalization": "@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yosmy\\Phone\\": [
+                "src"
+            ]
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://php.yosmy.com"
+        }
+    ],
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}
