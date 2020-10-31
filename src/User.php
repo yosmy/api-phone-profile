@@ -2,70 +2,25 @@
 
 namespace Yosmy\Phone;
 
-use MongoDB\Model\BSONDocument;
-
-class User extends BSONDocument
+interface User
 {
     /**
-     * @param string $id
-     * @param string $country
-     * @param string $prefix
-     * @param string $number
+     * @return string
      */
-    public function __construct(
-        string $id,
-        string $country,
-        string $prefix,
-        string $number
-    ) {
-        parent::__construct([
-            'id' => $id,
-            'country' => $country,
-            'prefix' => $prefix,
-            'number' => $number,
-        ]);
-    }
+    public function getId(): string;
 
     /**
      * @return string
      */
-    public function getId(): string
-    {
-        return $this->offsetGet('id');
-    }
+    public function getCountry(): string;
 
     /**
      * @return string
      */
-    public function getCountry(): string
-    {
-        return $this->offsetGet('country');
-    }
+    public function getPrefix(): string;
 
     /**
      * @return string
      */
-    public function getPrefix(): string
-    {
-        return $this->offsetGet('prefix');
-    }
-
-    /**
-     * @return string
-     */
-    public function getNumber(): string
-    {
-        return $this->offsetGet('number');
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function bsonUnserialize(array $data)
-    {
-        $data['id'] = $data['_id'];
-        unset($data['_id']);
-
-        parent::bsonUnserialize($data);
-    }
+    public function getNumber(): string;
 }
