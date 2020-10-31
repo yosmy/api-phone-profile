@@ -1,26 +1,21 @@
 <?php
 
-namespace Yosmy\Phone;
+namespace Yosmy;
 
-interface GatherUser
+interface GatherPhone
 {
     /**
-     * @param string $id
-     *
-     * @return User
-     */
-    /**
-     * @param string|null $id
+     * @param string|null $user
      * @param string|null $country
      * @param string|null $prefix
      * @param string|null $number
      *
-     * @return User
+     * @return Phone|null
      */
     public function gather(
-        ?string $id,
+        ?string $user,
         ?string $country,
         ?string $prefix,
         ?string $number
-    );
+    ): ?Phone;
 }

@@ -1,35 +1,27 @@
 <?php
 
-namespace Yosmy\Phone;
+namespace Yosmy;
 
 use Yosmy\Mongo;
 
-/**
- * @di\service({
- *     private: true
- * })
- */
-class BaseManageUserCollection extends Mongo\BaseManageCollection
+class BaseManagePhoneCollection extends Mongo\BaseManageCollection implements ManagePhoneCollection
 {
     /**
-     * @di\arguments({
-     *     uri: "%mongo_uri%",
-     *     db:  "%mongo_db%"
-     * })
-     *
      * @param string $uri
      * @param string $db
+     * @param string $collection
      * @param string $root
      */
     public function __construct(
         string $uri,
         string $db,
+        string $collection,
         string $root
     ) {
         parent::__construct(
             $uri,
             $db,
-            'yosmy_phone_users',
+            $collection,
             [
                 'typeMap' => array(
                     'root' => $root

@@ -1,40 +1,40 @@
 <?php
 
-namespace Yosmy\Phone;
+namespace Yosmy;
 
 /**
  * @di\service()
  */
-class UpdateUser
+class UpdatePhone
 {
     /**
-     * @var ManageUserCollection
+     * @var ManagePhoneCollection
      */
     private $manageCollection;
 
     /**
-     * @param ManageUserCollection $manageCollection
+     * @param ManagePhoneCollection $manageCollection
      */
-    public function __construct(ManageUserCollection $manageCollection)
+    public function __construct(ManagePhoneCollection $manageCollection)
     {
         $this->manageCollection = $manageCollection;
     }
 
     /**
-     * @param string $id
+     * @param string $user
      * @param string $country
      * @param string $prefix
      * @param string $number
      */
     public function update(
-        string $id,
+        string $user,
         string $country,
         string $prefix,
         string $number
     ) {
         $this->manageCollection->updateOne(
             [
-                '_id' => $id
+                '_id' => $user
             ],
             [
                 '$set' => [

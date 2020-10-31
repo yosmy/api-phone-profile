@@ -1,25 +1,25 @@
 <?php
 
-namespace Yosmy\Phone;
+namespace Yosmy;
 
 use Yosmy\Mongo;
 
-class BaseUser extends Mongo\Document
+class BasePhone extends Mongo\Document implements Phone
 {
     /**
-     * @param string $id
+     * @param string $user
      * @param string $country
      * @param string $prefix
      * @param string $number
      */
     public function __construct(
-        string $id,
+        string $user,
         string $country,
         string $prefix,
         string $number
     ) {
         parent::__construct([
-            'id' => $id,
+            '_id' => $user,
             'country' => $country,
             'prefix' => $prefix,
             'number' => $number,
@@ -29,9 +29,9 @@ class BaseUser extends Mongo\Document
     /**
      * @return string
      */
-    public function getId(): string
+    public function getUser(): string
     {
-        return $this->offsetGet('id');
+        return $this->offsetGet('_id');
     }
 
     /**
@@ -59,13 +59,16 @@ class BaseUser extends Mongo\Document
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function bsonUnserialize(array $data)
+    public function jsonSerialize(): object
     {
-        $data['id'] = $data['_id'];
-        unset($data['_id']);
+        $data = parent::jsonSerialize();
 
-        parent::bsonUnserialize($data);
+        $data->user = $data->_id;
+
+        unset($data->_id);
+
+        return $data;
     }
 }

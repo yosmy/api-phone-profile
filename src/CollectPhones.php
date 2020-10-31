@@ -1,39 +1,39 @@
 <?php
 
-namespace Yosmy\Phone;
+namespace Yosmy;
 
 /**
  * @di\service()
  */
-class CollectUsers
+class CollectPhones
 {
     /**
-     * @var ManageUserCollection
+     * @var ManagePhoneCollection
      */
     private $manageCollection;
 
     /**
-     * @param ManageUserCollection $manageCollection
+     * @param ManagePhoneCollection $manageCollection
      */
-    public function __construct(ManageUserCollection $manageCollection)
+    public function __construct(ManagePhoneCollection $manageCollection)
     {
         $this->manageCollection = $manageCollection;
     }
 
     /**
-     * @param array|null $ids
+     * @param array|null $users
      * @param array|null $phones
      *
-     * @return Users
+     * @return Phones
      */
     public function collect(
-        ?array $ids,
+        ?array $users,
         ?array $phones
-    ) {
+    ): Phones {
         $criteria = [];
 
-        if ($ids !== null) {
-            $criteria['_id'] = ['$in' => $ids];
+        if ($users !== null) {
+            $criteria['_id'] = ['$in' => $users];
         }
 
         if ($phones !== null && !empty($phones)) {
@@ -51,6 +51,6 @@ class CollectUsers
 
         $cursor = $this->manageCollection->find($criteria);
 
-        return new Users($cursor);
+        return new Phones($cursor);
     }
 }

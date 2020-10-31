@@ -1,5 +1,5 @@
 {
-    "name": "yosmy/phone-user",
+    "name": "yosmy/phone",
     "description": "",
     "license": "MIT",
     "authors": [
@@ -10,15 +10,13 @@
     ],
     "require": {
         "php": ">=7.2",
-        "ext-mongodb": "*",
-        "ext-json": "*",
-        "mongodb/mongodb": "~1",
         "yosmy/mongo": "@dev",
-        "yosmy/phone-normalization": "@dev"
+        "yosmy/phone-normalization": "@dev",
+        "yosmy/uniqueness": "@dev"
     },
     "autoload": {
         "psr-4": {
-            "Yosmy\\Phone\\": [
+            "Yosmy\\": [
                 "src"
             ]
         }

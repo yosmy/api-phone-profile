@@ -1,23 +1,23 @@
 <?php
 
-namespace Yosmy\Phone;
+namespace Yosmy;
 
-interface PickUser
+interface PickPhone
 {
     /**
-     * @param string|null $id
+     * @param string|null $user
      * @param string|null $country
      * @param string|null $prefix
      * @param string|null $number
      *
-     * @return User
+     * @return Phone
      *
-     * @throws NonexistentUserException
+     * @throws NonexistentPhoneException
      */
     public function pick(
-        ?string $id,
+        ?string $user,
         ?string $country,
         ?string $prefix,
         ?string $number
-    );
+    ): Phone;
 }

@@ -1,21 +1,21 @@
 <?php
 
-namespace Yosmy\Phone;
+namespace Yosmy;
 
 /**
  * @di\service()
  */
-class BaseGatherUser implements GatherUser
+class BaseGatherPhone implements GatherPhone
 {
     /**
-     * @var ManageUserCollection
+     * @var ManagePhoneCollection
      */
     private $manageCollection;
 
     /**
-     * @param ManageUserCollection $manageCollection
+     * @param ManagePhoneCollection $manageCollection
      */
-    public function __construct(ManageUserCollection $manageCollection)
+    public function __construct(ManagePhoneCollection $manageCollection)
     {
         $this->manageCollection = $manageCollection;
     }
@@ -24,15 +24,15 @@ class BaseGatherUser implements GatherUser
      * {@inheritDoc}
      */
     public function gather(
-        ?string $id,
+        ?string $user,
         ?string $country,
         ?string $prefix,
         ?string $number
-    ) {
+    ): ?Phone {
         $criteria = [];
         
-        if ($id !== null) {
-            $criteria['_id'] = $id;
+        if ($user !== null) {
+            $criteria['_id'] = $user;
         }
 
         if ($country !== null) {
@@ -47,9 +47,9 @@ class BaseGatherUser implements GatherUser
             $criteria['number'] = $number;
         }
         
-        /** @var User $user */
-        $user = $this->manageCollection->findOne($criteria);
+        /** @var Phone $phone */
+        $phone = $this->manageCollection->findOne($criteria);
 
-        return $user;
+        return $phone;
     }
 }

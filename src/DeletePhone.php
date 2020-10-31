@@ -1,34 +1,34 @@
 <?php
 
-namespace Yosmy\Phone;
+namespace Yosmy;
 
 /**
  * @di\service()
  */
-class DeleteUser
+class DeletePhone
 {
     /**
-     * @var ManageUserCollection
+     * @var ManagePhoneCollection
      */
     private $manageCollection;
 
     /**
-     * @param ManageUserCollection $manageCollection
+     * @param ManagePhoneCollection $manageCollection
      */
-    public function __construct(ManageUserCollection $manageCollection)
+    public function __construct(ManagePhoneCollection $manageCollection)
     {
         $this->manageCollection = $manageCollection;
     }
 
     /**
-     * @param string $id
+     * @param string $user
      */
     public function delete(
-        string $id
+        string $user
     ) {
         $this->manageCollection->deleteOne(
             [
-                '_id' => $id
+                '_id' => $user
             ]
         );
     }

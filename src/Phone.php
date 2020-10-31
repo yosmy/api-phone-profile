@@ -1,13 +1,13 @@
 <?php
 
-namespace Yosmy\Phone;
+namespace Yosmy;
 
-interface User
+interface Phone
 {
     /**
      * @return string
      */
-    public function getId(): string;
+    public function getUser(): string;
 
     /**
      * @return string
